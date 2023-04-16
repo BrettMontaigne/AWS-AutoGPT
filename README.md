@@ -1,9 +1,14 @@
-# Auto-GPT: An Autonomous GPT-4 Experiment
+# Auto-GPT: An Autonomous GPT-4 Experiment (AWS Edition)
 ![GitHub Repo stars](https://img.shields.io/github/stars/Torantulino/auto-gpt?style=social)
 ![Twitter Follow](https://img.shields.io/twitter/follow/siggravitas?style=social)
 [![](https://dcbadge.vercel.app/api/server/PQ7VX6TY4t?style=flat)](https://discord.gg/PQ7VX6TY4t)
 
 Auto-GPT is an experimental open-source application showcasing the capabilities of the GPT-4 language model. This program, driven by GPT-4, autonomously develops and manages businesses to increase net worth. As one of the first examples of GPT-4 running fully autonomously, Auto-GPT pushes the boundaries of what is possible with AI.
+
+# About AWS in this Build
+
+This fork of AutoGPT includes AWS Cloudformation templates to deploy AutoGPT as an AWS resource in a serverless context. This wraps AutoGPT in a laLbda using an AWS Cloudformation template. 
+You can steer AutoGPT to return data respecting an expected format, opening the door to interesting use cases for state machines with built-in heuristic agents.
 
 ### Demo (30/03/2023):
 https://user-images.githubusercontent.com/22963551/228855501-2f5777cf-755b-4407-a643-c7299e5b6419.mp4
