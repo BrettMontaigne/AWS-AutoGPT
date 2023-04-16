@@ -1,0 +1,38 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: Lambda function to run a Python script using Go handler
+
+Resources:
+  AutoGPTLambdaFn:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      FunctionName: 'AutoGPTLambdaFn'
+      Handler: 'main'
+      Runtime: 'go1.x'
+      CodeUri: './path/to/your/compiled/go/handler.zip'
+      Environment:
+        Variables:
+          PINECONE_API_KEY: !Sub '{{resolve:ssm:/your/pinecone/api/key:1}}'
+          PINECONE_ENV: !Sub '{{resolve:ssm:/your/pinecone/region:1}}'
+          OPENAI_API_KEY: !Sub '{{resolve:ssm:/your/openai/api/key:1}}'
+          ELEVENLABS_API_KEY: !Sub '{{resolve:ssm:/your/elevenlabs/api/key:1}}'
+          SMART_LLM_MODEL: 'gpt-4'
+          FAST_LLM_MODEL: 'gpt-3.5-turbo'
+          GOOGLE_API_KEY: !Sub '{{resolve:ssm:/your/google/api/key:1}}'
+          CUSTOM_SEARCH_ENGINE_ID: !Sub '{{resolve:ssm:/your/custom/search/engine/id:1}}'
+          USE_AZURE: 'False'
+          OPENAI_AZURE_API_BASE: !Sub '{{resolve:ssm:/your/base/url/for/azure:1}}'
+          OPENAI_AZURE_API_VERSION: !Sub '{{resolve:ssm:/your/api/version/for/azure:1}}'
+          OPENAI_AZURE_DEPLOYMENT_ID: !Sub '{{resolve:ssm:/your/deployment/id/for/azure:1}}'
+          IMAGE_PROVIDER: 'dalle'
+          HUGGINGFACE_API_TOKEN: !Sub '{{resolve:ssm:/your/huggingface/api/token:1}}'
+          USE_MAC_OS_TTS: 'False'
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - AWSXRayDaemonWriteAccess
+        - Version: '2012-10-17'
+          Statement:
+            - Effect: 'Allow'
+              Action:
+                - 'ssm:GetParameter'
+              Resource: !Sub 'arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/your/*'
