@@ -10,6 +10,20 @@ Auto-GPT is an experimental open-source application showcasing the capabilities 
 This fork of AutoGPT includes AWS Cloudformation templates to deploy AutoGPT as an AWS resource in a serverless context. This wraps AutoGPT in a laLbda using an AWS Cloudformation template. 
 You can steer AutoGPT to return data respecting an expected format, opening the door to interesting use cases for state machines with built-in heuristic agents.
 
+To compile and package the Go handler along with the Python script, follow these steps:
+
+* Make sure you have the Go compiler installed on your system.
+* Navigate to the directory containing your main.go file.
+* Compile the Go code using the following command:
+
+`GOOS=linux go build -o autogpt_handler`
+
+Create a zip file containing the compiled Go handler and the scripts/main.py Python script:
+
+`zip handler.zip main scripts/main.py`
+
+Now you can use the handler.zip file as the CodeUri in your CloudFormation template. Remember to adjust the path in the CloudFormation template to match the location of your handler.zip file.
+
 ### Demo (30/03/2023):
 https://user-images.githubusercontent.com/22963551/228855501-2f5777cf-755b-4407-a643-c7299e5b6419.mp4
 
