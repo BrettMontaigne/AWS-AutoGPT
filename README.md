@@ -13,7 +13,7 @@ You can steer AutoGPT to return data respecting an expected format, opening the 
 To compile and package the Go handler along with the Python script, follow these steps:
 
 * Make sure you have the Go compiler installed on your system.
-* Navigate to the directory containing your main.go file.
+* Navigate to the directory containing your Go handler file (autogpt_handler.go).
 * Compile the Go code using the following command:
 
 `GOOS=linux go build -o autogpt_handler`
